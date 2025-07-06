@@ -1,54 +1,36 @@
-Akoum - Application Web pour la Gestion de la Disponibilité des Produits Locaux au Cameroun
+Projet Laravel - Gestion des produits locaux au Cameroun
 Description
-Akoum est une application web développée avec Laravel, destinée à faciliter la gestion de la disponibilité et la vente des produits fabriqués localement au Cameroun. Elle permet aux producteurs d’enregistrer leurs produits et points de vente, et aux consommateurs de consulter les produits disponibles, rechercher par catégorie ou localisation, et passer des commandes.
+Cette application web permet de gérer la disponibilité et la vente des produits fabriqués localement au Cameroun. Elle facilite la mise en relation entre producteurs, consommateurs et points de vente pour valoriser les produits locaux.
 
-Ce projet vise à valoriser les produits locaux, améliorer la visibilité des producteurs et faciliter l’accès des consommateurs aux produits locaux de qualité.
+Fonctionnalités principales
+Gestion des utilisateurs (producteurs, consommateurs, administrateurs) avec rôles et permissions.
 
-Fonctionnalités
-Enregistrement des producteurs et des consommateurs
+Enregistrement, validation et gestion des producteurs et consommateurs.
 
-Gestion des produits : création, mise à jour, suppression
+Gestion des produits par catégorie, avec suivi du stock et prix.
 
-Gestion des points de vente associés aux producteurs
+Gestion des points de vente : localisation, horaires et statut.
 
-Visualisation des produits disponibles par catégorie
+Interface sécurisée avec authentification, inscription et validation.
 
-Recherche des producteurs par ville
+Notifications par email ou SMS lors de la validation des comptes.
 
-Interface dédiée pour chaque rôle (producteur, consommateur, administrateur)
+Consultation facile des produits et producteurs selon critères (ville, catégorie).
 
-Authentification sécurisée avec gestion des rôles
+Interface responsive et intuitive.
 
-Validation des comptes producteurs et consommateurs par l’administrateur
-
-Notifications (email/SMS) lors de la validation des comptes
-
-Tableau de bord personnalisé selon le rôle utilisateur
-
-Déconnexion sécurisée
-
-Technologies utilisées
-Backend : Laravel (PHP Framework)
-
-Frontend : Blade Templates, Bootstrap 5, CSS personnalisé
-
-Base de données : MySQL
-
-Authentification : Laravel Breeze / Sanctum (selon l’implémentation)
-
-Contrôle de version : Git + GitHub
-
-Installation
 Prérequis
-PHP >= 8.x
+PHP >= 8.0
 
 Composer
 
-MySQL
+Serveur web (Apache, Nginx...)
 
-Node.js & npm (pour assets front-end)
+Base de données MySQL ou compatible
 
-Étapes
+Node.js et npm (pour les assets frontend)
+
+Installation
 Cloner le dépôt
 
 bash
@@ -62,26 +44,29 @@ bash
 Copier
 Modifier
 composer install
-Copier le fichier d’environnement et configurer la base de données
+Configurer l’environnement
+
+Copier le fichier .env.example en .env
 
 bash
 Copier
 Modifier
 cp .env.example .env
-# Modifier .env avec vos identifiants MySQL
+Modifier .env pour configurer la base de données et autres paramètres
+
 Générer la clé d’application
 
 bash
 Copier
 Modifier
 php artisan key:generate
-Lancer les migrations et les seeders
+Exécuter les migrations
 
 bash
 Copier
 Modifier
-php artisan migrate --seed
-Installer les dépendances front-end et compiler les assets
+php artisan migrate
+Installer les dépendances frontend
 
 bash
 Copier
@@ -94,43 +79,20 @@ bash
 Copier
 Modifier
 php artisan serve
+Le projet est accessible par défaut sur http://localhost:8000.
+
 Utilisation
-Accéder à l’application via http://localhost:8000
+Inscription et connexion des utilisateurs selon leur rôle (producteur, consommateur).
 
-S’inscrire en tant que producteur ou consommateur
+Producteurs peuvent gérer leurs produits et points de vente.
 
-Se connecter et utiliser le tableau de bord adapté à son rôle
+Consommateurs peuvent consulter les produits disponibles et rechercher des producteurs.
 
-Ajouter/modifier des produits et points de vente (producteur)
+Administrateurs valident les comptes et gèrent les utilisateurs.
 
-Consulter la liste des produits disponibles (consommateur)
-
-Rechercher par catégorie ou ville
-
-Administrer les utilisateurs et valider les inscriptions (administrateur)
-
-Structure du projet
-app/Models : Modèles Eloquent (Producteur, Consommateur, Produit, PointDeVente, etc.)
-
-resources/views : Vues Blade pour les interfaces utilisateur
-
-routes/web.php : Définition des routes web
-
-database/migrations : Migrations de la base de données
-
-app/Http/Controllers : Contrôleurs pour la logique métier
-
-public/ : Assets publics (CSS, JS, images)
-
-Contribuer
+Contribution
 Les contributions sont les bienvenues !
-Merci de créer une branche feature, de faire un commit clair et de proposer une pull request.
-
-Auteur
-MBO'O ATANGANA Orlys
-Email : mbo.ats@gmail.com
-GitHub : https://github.com/MBOODORIANNE
+Merci de respecter les bonnes pratiques de codage et de créer des Pull Requests claires.
 
 Licence
 Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
-
