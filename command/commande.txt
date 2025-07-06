@@ -1,0 +1,187 @@
+Commandes Utiles pour un Backend Laravel
+1. Installation et configuration
+- composer create-project laravel/laravel nom_du_projet
+ -> Créer un nouveau projet Laravel.
+- php artisan serve
+ -> Lancer le serveur de développement (localhost).
+- composer install
+ -> Installer les dépendances du projet.
+- composer update
+ -> Mettre à jour les dépendances.
+- cp .env.example .env
+ -> Copier le fichier .env.
+- php artisan key:generate
+ -> Générer une clé d'application.
+2. Migrations, Seeders et Base de Données
+- php artisan make:migration
+ -> Créer une nouvelle migration.
+- php artisan migrate
+ -> Exécuter toutes les migrations.
+- php artisan migrate:rollback
+ -> Annuler la dernière migration.
+- php artisan migrate:refresh
+ -> Rollback puis réexécuter les migrations.
+Commandes Utiles pour un Backend Laravel
+- php artisan migrate:fresh
+ -> Réinitialiser complètement la base de données.
+- php artisan make:seeder
+ -> Créer un seeder de données.
+- php artisan db:seed
+ -> Remplir la base avec les seeders.
+- php artisan make:factory
+ -> Créer une factory.
+3. Modèles, Contrôleurs & Requêtes
+- php artisan make:model -m
+ -> Créer un modèle avec migration.
+- php artisan make:controller --resource
+ -> Créer un contrôleur REST.
+- php artisan make:request
+ -> Créer une requête de validation.
+- php artisan make:middleware
+ -> Créer un middleware.
+- php artisan make:policy
+ -> Créer une politique d'autorisation.
+- php artisan make:job
+ -> Créer un job.
+Commandes Utiles pour un Backend Laravel
+- php artisan make:event
+ -> Créer un événement.
+- php artisan make:listener
+ -> Créer un écouteur.
+- php artisan make:mail
+ -> Créer une classe d'e-mail.
+- php artisan make:notification
+ -> Créer une notification.
+- php artisan make:command
+ -> Créer une commande artisan.
+- php artisan make:resource
+ -> Créer une ressource API.
+4. Maintenance et Performances
+- php artisan config:clear
+ -> Vider le cache de configuration.
+- php artisan cache:clear
+ -> Vider le cache global.
+- php artisan route:clear
+ -> Vider le cache des routes.
+- php artisan view:clear
+ -> Vider le cache des vues.
+Commandes Utiles pour un Backend Laravel
+- php artisan optimize:clear
+ -> Tout vider.
+- php artisan config:cache
+ -> Mettre la config en cache.
+- php artisan route:cache
+ -> Mettre les routes en cache.
+- php artisan view:cache
+ -> Compiler les vues.
+5. Tests
+- php artisan test
+ -> Lancer tous les tests.
+- php artisan test --filter=NomTest
+ -> Tester un cas spécifique.
+- php artisan make:test
+ -> Créer un test.
+- php artisan make:test --unit
+ -> Créer un test unitaire.
+6. Authentification et Sécurité
+- php artisan make:auth
+ -> (< Laravel 6) Ajouter l'auth classique.
+- php artisan make:controller AuthController
+ -> Contrôleur d'auth.
+Commandes Utiles pour un Backend Laravel
+- php artisan passport:install
+ -> Installer Laravel Passport.
+7. Reliese (Génération de modèles)
+- composer require reliese/laravel --dev
+ -> Installer Reliese.
+- php artisan vendor:publish --tag=reliese-models
+ -> Publier la config.
+- php artisan code:models
+ -> Générer les modèles.
+8. Autres commandes utiles
+- php artisan route:list
+ -> Lister toutes les routes.
+- php artisan schedule:run
+ -> Lancer les tâches planifiées.
+- php artisan queue:work
+ -> Démarrer la file de jobs.
+- php artisan storage:link
+ -> Créer le lien symbolique vers /storage.
+- php artisan down
+ -> Mettre le site en maintenance.
+- php artisan up
+ -> Remettre le site en ligne.
+
+
+
+
+
+Commandes Utiles pour un Backend Laravel
+1. Création et Initialisation d'un Projet Angular
+- npm install -g @angular/cli
+ -> Installer Angular CLI globalement.
+- ng new nom-projet
+ -> Créer un nouveau projet Angular.
+- cd nom-projet
+ -> Se déplacer dans le dossier du projet.
+- ng serve
+ -> Démarrer le serveur de développement.
+- ng serve --open
+ -> Démarrer le serveur et ouvrir dans le navigateur.
+2. Génération de Composants, Services, Modules, etc.
+- ng generate component nom
+ -> Créer un composant.
+- ng generate service nom
+ -> Créer un service.
+- ng generate module nom
+ -> Créer un module.
+- ng generate directive nom
+ -> Créer une directive.
+- ng generate pipe nom
+ -> Créer un pipe personnalisé.
+Commandes Utiles pour un Backend Laravel
+- ng g c nom
+ -> Abréviation pour générer un composant.
+- ng g s nom
+ -> Abréviation pour générer un service.
+3. Outils de Développement
+- ng build
+ -> Compiler l'application pour la production.
+- ng build --watch
+ -> Compiler en continu.
+- ng lint
+ -> Analyser le code pour détecter les erreurs.
+- ng test
+ -> Lancer les tests unitaires.
+- ng e2e
+ -> Lancer les tests end-to-end.
+4. Gestion de Modules et Routing
+- ng generate module nom --routing
+ -> Créer un module avec un routeur.
+- ng add @angular/router
+ -> Ajouter le routing à un projet existant.
+5. Gestion de Formulaires
+- ng generate component formulaire
+Commandes Utiles pour un Backend Laravel
+ -> Créer un composant de formulaire.
+- npm install @angular/forms
+ -> Installer le module des formulaires Angular.
+6. Installation de Librairies et Dépendances
+- npm install package
+ -> Installer un package via npm.
+- ng add @angular/material
+ -> Ajouter Angular Material.
+- ng add ngx-bootstrap
+ -> Ajouter ngx-bootstrap.
+7. Déploiement
+- ng build --prod
+ -> Construire pour la production.
+- npx angular-cli-ghpages --dir=dist/nom-projet
+ -> Déployer sur GitHub Pages.
+8. Autres commandes utiles
+- ng update
+ -> Mettre à jour Angular et ses dépendances.
+- ng version
+ -> Afficher la version de Angular CLI.
+- ng help
+ -> Afficher l'aide de toutes les commandes.

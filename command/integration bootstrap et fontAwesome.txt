@@ -1,0 +1,79 @@
+commande pour les boostrap et font awesome 
+
+// bootstrap
+npm install bootstrap@latest
+npm install @popperjs/core
+// tout ce ci plus haut se faire a la racine de mon projet
+// dans le dossier resources/css/app.css je colle
+@import "bootstrap/dist/css/bootstrap.min.css";
+// dans le dossier resources/js/app.css je colle
+import 'bootstrap';
+// je saisir dans le terminal a la racine de mon projet
+npm run dev
+
+// dans mon template je n'est plus qu'a utiliser mon bootstrap comme dans l'exemple suivant
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Test</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert alert-success" role="alert">
+            Bootstrap est bien installé !
+        </div>
+        <br>
+        <button class="btn btn-primary">Bouton Bootstrap</button>
+        <div class="container mt-5">
+
+        <div class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle"></i> Font Awesome est bien installé !
+        </div>
+
+    </div>
+    
+    </div>
+</body>
+-->
+//quand je saisir npm run dev je le laisse ouvert et je vais dans un autre terminal lancer mon application avec la commande 
+php artisan serve
+
+/* pour installer font awesome
+npm install @fortawesome/fontawesome-free
+// dans resource/css/app.css je cole le lien
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+// dans resource/js/app.js je colle
+import '@fortawesome/fontawesome-free/js/all.min.js';
+// je saisir dans le terminal a la racine de mon projet
+npm run dev
+// et j'utilise font awesome comme dans l'exemple suivant
+<div class="alert alert-success" role="alert">
+    <i class="fas fa-check-circle"></i> Font Awesome est bien installé !
+</div>
+*/
+// pour eviter les erreur je vais dans le fichier vite.config.js et je remplace son contenu parent
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import path from 'path';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+            ],
+            refresh: true,
+        }),
+    ],
+    resolve: {
+        alias: {
+            'bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+            '@fortawesome': path.resolve(__dirname, 'node_modules/@fortawesome'),
+        },
+    },
+});
+
+
+
