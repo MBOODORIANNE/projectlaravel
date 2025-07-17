@@ -95,7 +95,7 @@ class UserController extends Controller
     public function toValidate()
     {
         $users = User::where('is_validated', false)
-            ->whereIn('role', ['producteur', 'consommateur'])
+            ->whereIn('role', ['producteur'])
             ->get();
         return view('users.to_validate', compact('users'));
     }

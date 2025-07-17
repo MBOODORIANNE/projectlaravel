@@ -29,7 +29,7 @@ class ProduitController extends Controller
             'photo' => 'nullable|string',
             'categorie_id' => 'required|exists:categories,id',
         ]);
-        $validated['utilisateur_id'] = auth()->id(); // Assurez-vous que l'utilisateur est authentifié
+        $validated['user_id'] = auth()->id(); // Assurez-vous que l'utilisateur est authentifié
         Produit::create($validated);
         return redirect()->route('produits.index')->with('success', 'Produit enregistré.');
     }

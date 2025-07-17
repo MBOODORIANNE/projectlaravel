@@ -74,15 +74,14 @@ public function producteur()
 }
 
 
-    public function consommateur()
-    {
-        // On récupère les produits et points de vente validés
-        $produits = Produit::where('statut', 'valide')->get();
-        $pointsDeVente = PointDeVente::where('statut', 'valide')->get();
+public function consommateur()
+{
+    $produits = Produit::where('statut', 'valide')->get();
+    $pointsDeVente = PointDeVente::where('statut', 'valide')->get();
 
-        // On transmet bien les deux variables à la vue
-        return view('dashboard.consommateur', compact('produits', 'pointsDeVente'));
-    }
+    return view('dashboard.consommateur', compact('produits', 'pointsDeVente'));
+}
+
 
 }
 

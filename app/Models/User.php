@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-    
+    use HasApiTokens,HasFactory, Notifiable;
+
      protected $guard_name = 'web'; // or whatever guard you want to use
 
     protected $fillable = [
@@ -41,7 +43,7 @@ class User extends Authenticatable
 {
     return $this->hasMany(\App\Models\PointDeVente::class);
 }
-            
+
     public function scopeProducteurs($query)
     {
         return $query->where('role', 'producteur');

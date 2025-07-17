@@ -10,16 +10,53 @@
         color: #2c3e50;
     }
 
-    .dashboard-container {
-        width: 100%;
+    .dashboard-layout {
+        display: flex;
         min-height: 100vh;
-        padding: 40px 60px;
+        gap: 20px;
+        padding: 30px 50px;
         box-sizing: border-box;
+    }
+
+    .sidebar {
+        width: 250px;
+        background-color: #1e88e5;
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar h3 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .sidebar a {
+        color: #cce6ff;
+        padding: 12px 15px;
+        margin-bottom: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+    }
+
+    .sidebar a:hover {
+        background-color: #1565c0;
+        color: #fff;
+    }
+
+    .main-content {
+        flex-grow: 1;
     }
 
     .dashboard-header {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
 
     .dashboard-header h2 {
@@ -34,7 +71,7 @@
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         padding: 30px 40px;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
         transition: box-shadow 0.3s ease;
     }
 
@@ -46,23 +83,19 @@
         margin-bottom: 25px;
         color: #34495e;
         font-weight: 700;
-        letter-spacing: 1px;
     }
 
     .products-list ul {
         list-style: none;
         padding: 0;
-        margin: 0;
     }
 
     .products-list li {
         padding: 14px 0;
         border-bottom: 1px solid #eee;
         font-size: 1.15rem;
-        color: #2c3e50;
         display: flex;
         justify-content: space-between;
-        align-items: center;
         font-weight: 600;
     }
 
@@ -77,7 +110,7 @@
     }
 
     .row.g-4 {
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
 
     .card-option {
@@ -86,9 +119,6 @@
         box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
         cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         height: 100%;
     }
 
@@ -98,11 +128,7 @@
     }
 
     .card-option .card-body {
-        padding: 35px 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
+        padding: 30px;
     }
 
     .card-option .card-title {
@@ -112,18 +138,8 @@
     }
 
     .card-option .card-text {
+        margin-bottom: 20px;
         color: #555;
-        margin-bottom: 25px;
-        font-size: 1rem;
-    }
-
-    .card-option .btn {
-        margin-top: auto;
-        padding: 12px 28px;
-        font-weight: 700;
-        border-radius: 12px;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
     }
 
     .btn-primary {
@@ -148,7 +164,7 @@
 
     .logout-section {
         text-align: center;
-        margin-top: 60px;
+        margin-top: 40px;
     }
 
     .logout-section form button {
@@ -168,62 +184,63 @@
     }
 </style>
 
-<div class="dashboard-container">
+<div class="dashboard-layout">
 
-    {{-- En-tête --}}
-    <div class="dashboard-header">
-        <h2>🎯 Tableau de bord - Consommateur</h2>
-    </div>
-
-    {{-- Liste des produits disponibles --}}
-    <div class="products-list">
-        <h3>🛒 Produits disponibles</h3>
-
-        @if(isset($produits) && $produits->isNotEmpty())
-            <ul>
-                @foreach($produits as $produit)
-                    <li>
-                        <span>{{ $produit->libelle }}</span>
-                        <span class="price">{{ number_format($produit->prix, 0) }} FCFA</span>
-                    </li>
-                @endforeach
-            </ul>
-        @else
-            <p>Aucun produit actuellement disponible.</p>
-        @endif
-    </div>
-
-    {{-- Options rapides --}}
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="card card-option">
-                <div class="card-body">
-                    <h5 class="card-title">🔍 Rechercher des produits par catégorie</h5>
-                    <p class="card-text">Explorez les produits selon leur type ou catégorie spécifique.</p>
-                    <a href="{{ route('listing.produits.categories') }}" class="btn btn-primary">Voir les catégories</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="card card-option">
-                <div class="card-body">
-                    <h5 class="card-title">🧑‍🌾 Trouver des producteurs par ville</h5>
-                    <p class="card-text">Consultez les producteurs disponibles dans votre localité.</p>
-                    <a href="{{ route('listing.producteurs.ville') }}" class="btn btn-success">Voir les villes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Déconnexion --}}
-    <div class="logout-section">
+    {{-- Menu latéral --}}
+    <div class="sidebar">
+        <h3>👤 Consommateur</h3>
+        <a href="{{ route('listing.produits.categories') }}">🔍 Produits par catégorie</a>
+        <a href="{{ route('listing.producteurs.ville') }}">🧑‍🌾 Producteurs par ville</a>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button type="submit">
-                🚪 Se déconnecter
-            </button>
+            <button class="btn btn-sm mt-4" type="submit" style="background-color:#dc3545;color:white;width:100%;border-radius:10px;">🚪 Déconnexion</button>
         </form>
     </div>
+
+    {{-- Zone principale --}}
+    <div class="main-content">
+        <div class="dashboard-header">
+            <h2>🎯 Tableau de bord - Consommateur</h2>
+        </div>
+
+        <div class="products-list">
+            <h3>🛒 Produits disponibles</h3>
+            @if(isset($produits) && $produits->isNotEmpty())
+                <ul>
+                    @foreach($produits as $produit)
+                        <li>
+                            <span>{{ $produit->libelle }}</span>
+                            <span class="price">{{ number_format($produit->prix, 0) }} FCFA</span>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <p>Aucun produit actuellement disponible.</p>
+            @endif
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card card-option">
+                    <div class="card-body">
+                        <h5 class="card-title">🔍 Rechercher par catégorie</h5>
+                        <p class="card-text">Explorez les produits selon leur type ou catégorie.</p>
+                        <a href="{{ route('listing.produits.categories') }}" class="btn btn-primary">Voir les catégories</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card card-option">
+                    <div class="card-body">
+                        <h5 class="card-title">🧑‍🌾 Producteurs par ville</h5>
+                        <p class="card-text">Consultez les producteurs dans votre localité.</p>
+                        <a href="{{ route('listing.producteurs.ville') }}" class="btn btn-success">Voir les villes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection

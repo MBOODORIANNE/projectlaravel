@@ -8,9 +8,22 @@ use Illuminate\Http\Request;
 
 class PointDeVenteApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return PointDeVente::all();
+        $query = PointDeVente::query();
+
+        // Filtre sur le statut si présent
+        // if ($request->has('statut')) {
+        //     $query->where('statut', $request->statut);
+        // }
+
+        $perPage = $request->input('per_page', 12);
+        $points = $query->paginate($perPage);
+
+        return response()->json([
+            'data' => $points->items(),
+            'total' => $points->total()
+        ]);
     }
 
     public function show($id)

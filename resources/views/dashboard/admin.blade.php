@@ -4,19 +4,18 @@
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
-    /* ---------------------
-       Sidebar (navigation)
-       --------------------- */
+    /* Sidebar (navigation) */
     .sidebar {
         position: fixed; /* Fixée pour rester visible */
         top: 0;
         left: 0;
         height: 100vh; /* Pleine hauteur */
         width: 450px;
-        background-color:rgba(31, 204, 97, 0.84); /* Bleu Bootstrap */
+        background-color: rgba(31, 204, 97, 0.84);
         padding-top: 20px;
-        border-right: 2px solidrgb(27, 172, 70);
+        border-right: 2px solid rgb(27, 172, 70);
         overflow-y: auto;
         z-index: 1000;
     }
@@ -36,24 +35,21 @@
     .sidebar ul {
         list-style: none;
         padding-left: 0;
+        margin-bottom: 0;
     }
     .sidebar ul ul {
         padding-left: 1rem; /* Indentation sous-menus */
     }
 
-    /* --------------------
-       Main content (dashboard)
-       -------------------- */
+    /* Main content (dashboard) */
     .main-content {
-        margin-left: 220px; /* Décalage à droite de la sidebar */
+        margin-left: 450px; /* Décalage à droite de la sidebar */
         padding: 30px;
         background-color: #f8f9fa; /* Gris très clair */
-        min-height: 100vh; /* Pour toujours prendre toute la hauteur */
+        min-height: 100vh; /* Toujours prendre toute la hauteur */
     }
 
-    /* -----------------
-       Cartes statistiques
-       ----------------- */
+    /* Cartes statistiques */
     .dashboard-card {
         border-radius: 10px;
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
@@ -68,28 +64,22 @@
         font-weight: 600;
     }
 
-    /* -------------
-       Tableau styles
-       ------------- */
+    /* Tableau styles */
     table thead {
-        background-color:rgb(48, 202, 69);
+        background-color: rgb(48, 202, 69);
         color: white;
     }
     table tbody tr:nth-child(odd) {
         background-color: #e9ecef;
     }
 
-    /* -------------
-       Titres sections
-       ------------- */
+    /* Titres sections */
     h2, h4 {
         font-weight: 700;
         margin-bottom: 1rem;
     }
 
-    /* -------------
-       Formulaire recherche
-       ------------- */
+    /* Formulaire recherche */
     .search-form {
         max-width: 400px;
         margin-bottom: 2rem;
@@ -101,21 +91,24 @@
         <li><a href="{{ route('admin.dashboard') }}"><ion-icon name="home-outline"></ion-icon>&nbsp; Accueil</a></li>
         <li><a href="{{ route('categories.index') }}"><ion-icon name="grid-outline"></ion-icon>&nbsp; Catégories</a></li>
         <li><a href="{{ route('produits.index') }}"><ion-icon name="cube-outline"></ion-icon>&nbsp; Produits</a></li>
-        <li><a href="{{ route('points-de-vente.index')}}"><ion-icon name="business-outline"></ion-icon>&nbsp; PointsdeVente</a></li>
+        <li><a href="{{ route('points-de-vente.index') }}"><ion-icon name="business-outline"></ion-icon>&nbsp; Points de Vente</a></li>
         <li><a href="{{ route('listing.produits.categories') }}"><ion-icon name="list-outline"></ion-icon>&nbsp; Produits par Catégorie</a></li>
         <li><a href="{{ route('listing.producteurs.ville') }}"><ion-icon name="map-outline"></ion-icon>&nbsp; Producteurs par Ville</a></li>
         <li><a href="{{ route('users.to_validate') }}"><ion-icon name="checkmark-done-outline"></ion-icon>&nbsp; Producteurs à valider</a></li>
-        <li><a href="{{ route('admin.a_valider') }}"><ion-icon name="alert-circle-outline"></ion-icon>&nbsp; Produits à valider</a></li>
-        <ul>
-            <li><a href="{{ route('admin.valides') }}">Produits validés</a></li>
-            <li><a href="{{ route('admin.refuses') }}">Produits refusés</a></li>
-        </ul>
-        <!-- Points de vente à valider -->
-        <li><a href="{{ route('admin.points-de-vente.index') }}"><ion-icon name="storefront-outline"></ion-icon>&nbsp; Points de Vente à valider</a></li>
-        <ul style="margin-left: 20px;">
-            <li><a href="{{ route('admin.points-de-vente.valides') }}"><ion-icon name="checkmark-outline"></ion-icon>&nbsp; Points validés</a></li>
-            <li><a href="{{ route('admin.points-de-vente.refuses') }}"><ion-icon name="close-outline"></ion-icon>&nbsp; Points refusés</a></li>
-        </ul>
+        <li>
+            <a href="{{ route('admin.a_valider') }}"><ion-icon name="alert-circle-outline"></ion-icon>&nbsp; Produits à valider</a>
+            <ul>
+                <li><a href="{{ route('admin.valides') }}">Produits validés</a></li>
+                <li><a href="{{ route('admin.refuses') }}">Produits refusés</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="{{ route('admin.points-de-vente.index') }}"><ion-icon name="storefront-outline"></ion-icon>&nbsp; Points de Vente à valider</a>
+            <ul style="margin-left: 20px;">
+                <li><a href="{{ route('admin.points-de-vente.valides') }}"><ion-icon name="checkmark-outline"></ion-icon>&nbsp; Points validés</a></li>
+                <li><a href="{{ route('admin.points-de-vente.refuses') }}"><ion-icon name="close-outline"></ion-icon>&nbsp; Points refusés</a></li>
+            </ul>
+        </li>
         <li><a href="{{ route('logout') }}"><ion-icon name="log-out-outline"></ion-icon>&nbsp; Déconnexion</a></li>
     </ul>
 </div>
@@ -224,7 +217,7 @@
             datasets: [{
                 label: 'Producteurs',
                 data: [{{ $producteursValides ?? 0 }}, {{ $producteursNonValides ?? 0 }}],
-                backgroundColor: ['#0d6efd', '#6c757d'], // Bleu Bootstrap et gris
+                backgroundColor: ['#0d6efd', '#6c757d'],
                 borderWidth: 1
             }]
         },

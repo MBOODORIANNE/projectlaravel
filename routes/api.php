@@ -9,9 +9,15 @@ use App\Http\Controllers\Api\AdminPointDeVenteController;
 use App\Http\Controllers\Api\ProducteurProduitController;
 use App\Http\Controllers\Api\ProducteurPointDeVenteApiController;
 use App\Http\Controllers\Api\ProducteurPointDeVenteController;
+use App\Http\Controllers\Api\UserApiController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+
+// Routes publiques pour l'affichage des produits et catégories
+Route::apiResource('/produits', ProduitApiController::class);
+Route::apiResource('/categories', CategorieApiController::class);
+Route::get('/producteurs', [UserApiController::class, 'indexProducteurs']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
@@ -31,7 +37,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/admin/produits/valides', [AdminProducteurApiController::class, 'produitsValides']);
         Route::get('/admin/produits/refuses', [AdminProducteurApiController::class, 'produitsRefuses']);
 
-        Route::get('/admin/points-de-vente', [AdminPointDeVenteApiController::class, 'index']);
+        Route::get('/admin/points-de-vente', [AdminPointDeVenteController::class, 'index']);
         Route::put('/admin/points-de-vente/{id}/valider', [AdminPointDeVenteController::class, 'valider']);
         Route::put('/admin/points-de-vente/{id}/refuser', [AdminPointDeVenteController::class, 'refuser']);
         Route::get('/admin/points-de-vente/valides', [AdminPointDeVenteController::class, 'valides']);
@@ -42,7 +48,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware(['roleuser:producteur', 'producteur.validated'])->group(function () {
         Route::get('/producteur/dashboard', fn () => response()->json(['message' => 'Producteur Dashboard']));
 
-        Route::apiResource('/producteur/produits', ProducteurProduitApiController::class);
+        Route::apiResource('/producteur/produits', ProducteurProduitController::class);
         Route::apiResource('/producteur/points-de-vente', ProducteurPointDeVenteApiController::class);
     });
 
@@ -54,7 +60,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     // COMMUNS
-    Route::apiResource('/produits', ProduitApiController::class)->only(['index', 'show']);
-    Route::apiResource('/categories', CategorieApiController::class)->only(['index', 'show']);
     Route::apiResource('/points-de-vente', PointDeVenteApiController::class)->only(['index', 'show']);
 });
