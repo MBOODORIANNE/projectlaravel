@@ -1,61 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Projet Laravel - Gestion des produits locaux au Cameroun
+Description
+Cette application web permet de gérer la disponibilité et la vente des produits fabriqués localement au Cameroun. Elle facilite la mise en relation entre producteurs, consommateurs et points de vente pour valoriser les produits locaux.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Fonctionnalités principales
+Gestion des utilisateurs (producteurs, consommateurs, administrateurs) avec rôles et permissions.
 
-## About Laravel
+Enregistrement, validation et gestion des producteurs et consommateurs.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Gestion des produits par catégorie, avec suivi du stock et prix.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Gestion des points de vente : localisation, horaires et statut.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Interface sécurisée avec authentification, inscription et validation.
 
-## Learning Laravel
+Notifications par email ou SMS lors de la validation des comptes.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Consultation facile des produits et producteurs selon critères (ville, catégorie).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Interface responsive et intuitive.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Prérequis
+PHP >= 8.0
 
-## Laravel Sponsors
+Composer
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Serveur web (Apache, Nginx...)
 
-### Premium Partners
+Base de données MySQL ou compatible
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+Node.js et npm (pour les assets frontend)
 
-## Contributing
+Installation
+Cloner le dépôt
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+bash
+Copier
+Modifier
+git clone https://github.com/MBOODORIANNE/projectLaravel.git
+cd projectLaravel
+Installer les dépendances PHP
 
-## Code of Conduct
+bash
+Copier
+Modifier
+composer install
+Configurer l’environnement
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copier le fichier .env.example en .env
 
-## Security Vulnerabilities
+bash
+Copier
+Modifier
+cp .env.example .env
+Modifier .env pour configurer la base de données et autres paramètres
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Générer la clé d’application
 
-## License
+bash
+Copier
+Modifier
+php artisan key:generate
+Exécuter les migrations
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+bash
+Copier
+Modifier
+php artisan migrate
+Installer les dépendances frontend
+
+bash
+Copier
+Modifier
+npm install
+npm run dev
+Lancer le serveur de développement
+
+bash
+Copier
+Modifier
+php artisan serve
+Le projet est accessible par défaut sur http://localhost:8000.
+
+Utilisation
+Inscription et connexion des utilisateurs selon leur rôle (producteur, consommateur).
+
+Producteurs peuvent gérer leurs produits et points de vente.
+
+Consommateurs peuvent consulter les produits disponibles et rechercher des producteurs.
+
+Administrateurs valident les comptes et gèrent les utilisateurs.
+
+Contribution
+Les contributions sont les bienvenues !
+Merci de respecter les bonnes pratiques de codage et de créer des Pull Requests claires.
+
+Licence
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
