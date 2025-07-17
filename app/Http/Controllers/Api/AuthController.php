@@ -49,11 +49,12 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $fields = $request->validate([
-            'email' => 'required|string|email',
+            'email' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        $user = User::where('email', $fields['email'])->first();
+
+        $user = User::where('email', $fields['email'])->first() ?? User::where('nom_utilisateur', $fields['nom_utilisateur'])->first();
 
         if (!$user || !Hash::check($fields['password'], $user->password)) {
             throw ValidationException::withMessages([
